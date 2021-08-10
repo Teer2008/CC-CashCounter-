@@ -58,6 +58,10 @@ class Rechner:
     def SpeicherungsfrageCash(self):
         self.speicher_frage = input(str("Speichern?(y/n)"))
         if self.speicher_frage == "y":
+            self.cash_save = glob.glob('*.ccca')
+            for self.o_save in self.cash_save:
+                self.datei_name = self.o_save
+                os.remove(self.datei_name)
             self.speicherungs_name = (self.DerzeitigerStand + "€" + ".ccca")
             cash_counter.SpeichernCashUpdate()
         if self.speicher_frage == "n":
@@ -97,12 +101,6 @@ class Rechner:
             if self.Schell_Input == "cash list":
                 os.system("cls")
                 cash_counter.Current_Cash_Boot()
-
-            if self.Schell_Input == "delete test":
-                self.cash_save = glob.glob('*.ccca')
-                for self.o_save in self.cash_save:
-                    self.datei_name = self.o_save
-                    os.remove(self.datei_name)
 
     def Schell_Func_Exit(self):
             sys.exit()
